@@ -5,4 +5,5 @@ Exec=sublime_text
 Icon=sublime_text
 Type=Application
 Terminal=false
-Categories=Utility;TextEditor;
+MimeType=text/plain;
+Categories=Utility;TextEditor;Development;
