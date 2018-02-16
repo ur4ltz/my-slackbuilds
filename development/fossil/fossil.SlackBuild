@@ -2,7 +2,7 @@
 
 # Slackware build script for fossil
 
-# Copyright 2017 Andy Goth <andrew.m.goth@gmail.com>
+# Copyright 2018 Andy Shevchenko <ur4ltz@gmail.com>
 # All rights reserved.
 #
 # Redistribution and use of this script, with or without modification, is
@@ -23,13 +23,13 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=fossil
-VERSION=${VERSION:-2.3}
+VERSION=${VERSION:-2.5}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_ltz}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
-    i?86) ARCH=i586 ;;
+    i?86) ARCH=i686 ;;
     arm*) ARCH=arm ;;
        *) ARCH=$( uname -m ) ;;
   esac
