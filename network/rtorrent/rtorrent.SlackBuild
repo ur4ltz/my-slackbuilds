@@ -13,11 +13,11 @@
 PRGNAM=rtorrent
 VERSION=${VERSION:-0.9.6}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_ltz}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
-    i?86) ARCH=i486 ;;
+    i?86) ARCH=i686 ;;
     arm*) ARCH=arm ;;
        *) ARCH=$( uname -m ) ;;
   esac
@@ -66,6 +66,7 @@ CXXFLAGS="$SLKCFLAGS" \
   --sysconfdir=/etc \
   --localstatedir=/var \
   --mandir=/usr/man \
+  --with-xmlrpc-c=/usr/bin/xmlrpc-c-config \
   --build=$ARCH-slackware-linux
 
 make
