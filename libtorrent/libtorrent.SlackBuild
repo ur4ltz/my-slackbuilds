@@ -1,24 +1,17 @@
 #!/bin/sh
 
-# Slackware build script for rtorrent
-# Written by Brian Kysela <brian.kysela@gmail.com> 2009-11-04
-# Updated to 0.8.6 by Brian Kysela 2010-02-16
-# Updated to include rtorrent.rc 2010-04-20
-# Updated to 0.8.7 by Brian Kysela 2010-10-27
-# Patched for new ncurses in 13.37 by rworkman
-# Updated to 0.8.8 by Brian Kysela 2011-05-09
-# Updated to 0.8.9 by Brian Kysela 2011-06-22
-# Updated to 0.9.0 by Brian Kysela 2011-12-12
-# Updated to 0.9.7 by Andy Shevchenko 2019-02-13
+# Slackware build script for libtorrent
+# Written by Tom Fitzhenry <tom@fitzhenry.name> 2007/08/22
+# Updated by Andrew Brouwers, abrouwers@gmail.com
 
-PRGNAM=rtorrent
-VERSION=${VERSION:-0.9.7}
+PRGNAM=libtorrent
+VERSION=${VERSION:-0.13.7}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_ltz}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
-    i?86) ARCH=i686 ;;
+    i?86) ARCH=i486 ;;
     arm*) ARCH=arm ;;
        *) ARCH=$( uname -m ) ;;
   esac
@@ -58,7 +51,6 @@ find -L . \
  \( -perm 666 -o -perm 664 -o -perm 640 -o -perm 600 -o -perm 444 \
   -o -perm 440 -o -perm 400 \) -exec chmod 644 {} \;
 
-LDFLAGS="-lpthread" \
 CFLAGS="$SLKCFLAGS" \
 CXXFLAGS="$SLKCFLAGS" \
 
@@ -69,20 +61,19 @@ CXXFLAGS="$SLKCFLAGS" \
   --libdir=/usr/lib${LIBDIRSUFFIX} \
   --sysconfdir=/etc \
   --localstatedir=/var \
-  --mandir=/usr/man \
-  --with-xmlrpc-c=/usr/bin/xmlrpc-c-config \
+  --with-posix-fallocate \
   --build=$ARCH-slackware-linux
 
 make
 make install DESTDIR=$PKG
 
-find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
-  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
-
 mkdir -p $PKG/usr/doc/$PRGNAM-$VERSION
-cp -a AUTHORS COPYING INSTALL README doc/rtorrent.rc $PKG/usr/doc/$PRGNAM-$VERSION
+cp -a AUTHORS COPYING INSTALL NEWS README $PKG/usr/doc/$PRGNAM-$VERSION
 find $PKG/usr/doc/$PRGNAM-$VERSION -type f -exec chmod 644 {} \;
 cat $CWD/$PRGNAM.SlackBuild > $PKG/usr/doc/$PRGNAM-$VERSION/$PRGNAM-SlackBuild
+
+find $PKG -print0 | xargs -0 file | grep -e "executable" -e "shared object" | grep ELF \
+  | cut -f 1 -d : | xargs strip --strip-unneeded 2> /dev/null || true
 
 mkdir -p $PKG/install
 cat $CWD/slack-desc > $PKG/install/slack-desc
