@@ -27,9 +27,9 @@
 # SOFTWARE.
 
 PRGNAM=google-go-lang
-VERSION=${VERSION:-1.11.4}
+VERSION=${VERSION:-1.12.7}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_ltz}
 
 RELEASE=${RELEASE:-linux}
 
