@@ -4,7 +4,7 @@
 # Written by Andrew Lobanov <spline @ rooker dot ru>
 
 PRGNAM=rofi
-VERSION=${VERSION:-1.5.2}
+VERSION=${VERSION:-1.5.4}
 BUILD=${BUILD:-1}
 TAG=${TAG:-_ltz}
 
