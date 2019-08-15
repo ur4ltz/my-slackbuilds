@@ -26,9 +26,9 @@
 #  ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 PRGNAM=geany-plugins
-VERSION=${VERSION:-1.34.0}
+VERSION=${VERSION:-1.35.0}
 BUILD=${BUILD:-1}
-TAG=${TAG:-_SBo}
+TAG=${TAG:-_ltz}
 
 if [ -z "$ARCH" ]; then
   case "$( uname -m )" in
